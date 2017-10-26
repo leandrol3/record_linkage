@@ -11,9 +11,9 @@ import recordlinkage
 
 from pandas.tests.io.parser import parse_dates, usecols
 from nameparser import HumanName
-from bokeh.layouts import column
+#from layouts import column
 
-HumanName('Leandro Cesar Lopes')
+#HumanName('Leandro Cesar Lopes')
 #from matplotlib.pyplot import style
 
 #style.use('ggplot')
@@ -23,7 +23,7 @@ HumanName('Leandro Cesar Lopes')
 #              'Clicks': [123,543,564,124,1234,555]}
 
 file = "./data/DADOS_GERAIS.csv"
-qtde = 4000000
+qtde = 40000
 
 
 #Teste de identificação de colunas
@@ -37,27 +37,29 @@ qtde = 4000000
 #parser = lambda x: pd.datetime.strptime(x, '%y:%j:%???')
 #df = pd.read_csv(file, error_bad_lines=False,parse_dates=['DataCadastro'], date_parser=parser, dtype={'IdSKU': np.int64, 'CodigoMktp': object, 'Ean13': object} , sep=";",header=0 , infer_datetime_format=True, nrows=qtde, encoding='latin-1')                     
 
+#Carrega o arquivo dados_gerais  
 df = pd.read_csv(file, error_bad_lines=False, usecols=[0,1,3,6,7,8], dtype={'IdSKU': np.int64, 'CodigoMktp': object, 'Ean13': object} , sep=";",header=0 , infer_datetime_format=True, nrows=qtde, encoding='latin-1')                     
           
+#Aplicação da Regra 1.1 - Identifica EAN e depois Titulos Duplicados
+df_EAN_Duplicated = df.duplicated(['Ean13'], keep=False)
+df_Title_Duplicated = pd.DataFrame(df.duplicated(['Produto'], keep=False))  
 
-#df_EAN_Unique = df.duplicated(['Ean13'], keep=False)
-df_EAN_Unique = pd.DataFrame(df.duplicated(['Ean13'], keep=False))
+df['Ean_Duplicated'] = df_EAN_Duplicated
+df['Title_Duplicated'] = df_Title_Duplicated
 
-df_Title_Unique = pd.DataFrame(df.duplicated(['Produto'], keep=False))  
-#df_Title_Unique = df.duplicated(['Produto'], keep=False)  
-
-#print(df_EAN_Unique)    #9833
-#df_REGRA1 = pd.DataFrame(df_EAN_Unique, df_Title_Unique}, columns=['EAN', 'Title'])
-
-#print(df_REGRA1.shape)
-
-#print(df_Title_Unique)  #9298
-
-#df_REGRA1 = pd.({df_EAN_Unique,df_Title_Unique}, dtype=bool)
-      
-#print(df_REGRA1)
-
+#Aplicação da Regra 1.2 - Identifica Titulos e Atributos Duplicados
 df_Title_Attribute_Unique = df.duplicated(['Produto', 'CodigoMktp'], keep=False)
-print(df_Title_Attribute_Unique)
+
+df['Title_Attribute_Duplicated'] = df_Title_Attribute_Unique
+
+
+# Separa os itens que serão marcados em Azul
+#(tips['time'] == 'Dinner') & (tips['tip'] > 5.00)]
+df_UNIQUE = (df['Ean_Duplicated'] == True)  # & (df['Title_Duplicated'] == True)
+
+print(df_UNIQUE)
+
+
+
 
 
