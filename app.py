@@ -6,6 +6,8 @@ Created on Oct 22, 2017
 
 import pandas as pd
 import numpy as np
+import dedupe as dpd
+
 import recordlinkage
 
 
