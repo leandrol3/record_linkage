@@ -30,12 +30,12 @@ qtde = 4000
 
 #Teste de identificação de colunas
 #cols = pd.read_csv(file, nrows=1).columns
-#print(cols)
+#print(cols) 
 
 #Index(['IdSKU;CodigoMktp;DataCadastro;Produto;IdCategoria;Categoria;IdDepartamento;Departamento;Ean13;Qtde_Disponivel;Ult_Data_movimento_Estoque;Vendas_Ano;Vendas_Mes_Anterior'], dtype='object')
 
 
-#Parser para a Data
+#Parser para a Data usando lambda--1
 #parser = lambda x: pd.datetime.strptime(x, '%y:%j:%???')
 #df = pd.read_csv(file, error_bad_lines=False,parse_dates=['DataCadastro'], date_parser=parser, dtype={'IdSKU': np.int64, 'CodigoMktp': object, 'Ean13': object} , sep=";",header=0 , infer_datetime_format=True, nrows=qtde, encoding='latin-1')
 
