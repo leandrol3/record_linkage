@@ -30,10 +30,10 @@ qtde = 4000
 
 #Teste de identificação de colunas
 #cols = pd.read_csv(file, nrows=1).columns
-#print(cols) 
+#print(cols)
 
 #Index(['IdSKU;CodigoMktp;DataCadastro;Produto;IdCategoria;Categoria;IdDepartamento;Departamento;Ean13;Qtde_Disponivel;Ult_Data_movimento_Estoque;Vendas_Ano;Vendas_Mes_Anterior'], dtype='object')
-
+#moa vendo a demo de git
 
 #Parser para a Data usando lambda--1
 #parser = lambda x: pd.datetime.strptime(x, '%y:%j:%???')
