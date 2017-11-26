@@ -9,3 +9,4 @@ Estudos com Pandas, Numpy e Record Linkage libraries
 - Estou fazendo Update no feature-01 agora
 - Bug do Feature 10 Local
 - Novo item adicionado
+- Outra alteração
