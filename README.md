@@ -10,3 +10,4 @@ Estudos com Pandas, Numpy e Record Linkage libraries
 - Bug do Feature 10 Local
 - Novo item adicionado
 - Outra alteração
+- Outra mudança 
