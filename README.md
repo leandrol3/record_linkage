@@ -6,4 +6,3 @@ Estudos com Pandas, Numpy e Record Linkage libraries
 - How to get attention?
 - Who is working on it?
 - Another update
-s
