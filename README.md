@@ -5,3 +5,4 @@ Estudos com Pandas, Numpy e Record Linkage libraries
 - Who is involved?
 - How to get attention?
 - Who is working on it?
+- Another update
